@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <!--Load the AJAX API-->
+    <style type="text/css">
+      #chart_div{
+        width: 1000px;
+        height: 500px;
+      }
+    </style>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = google.visualization.arrayToDataTable([
+          ['Mois', 'INDICE GLOBAL','Produits alimentaires et boissons nonalcoolisées','Boissons alcoolisées, tabacs et stupéfiants','Articles d’habillement et chaussures'],
+          ['Nov.-12',  105.6, 108.7,101.8,99.3],
+          ['Déc.-12',  104.7, 107.0,101.4,99.3],
+          ['Jan.-13',  104.6, 106.5,113.0,99.4],
+          ['Fév.-13',  104.6, 106.5,114.6,99.2]
+        ]);
+
+        // Set chart options
+        var options = {'colors':['#ff0000','#00ff00','#0000ff','#ffff00','#ff00ff'],'title':'Indice National des Prix à la Consommation Base 100 en 2008','legend':{position: 'none', textStyle: {color: 'blue', fontSize: 16}}};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+  </body>
+</html>
